@@ -1,5 +1,6 @@
 
 const { op } = require('sequelize');
+const Ubuntu = require('../models/Ubuntu');
 
 
 
@@ -8,7 +9,7 @@ const addUbuntu = async (req, res) => {
    
   try {
     let info = req.body
-    Conta.create({...info}).then(cont => {
+    Ubuntu.create({...info}).then(cont => {
       res.status(200).send(info);
       console.log(info)
     })
@@ -22,7 +23,7 @@ const addUbuntu = async (req, res) => {
 const ShowOneUbuntu = async (req, res) => {
   try {
     let id = req.params.id;
-    Conta.findOne({ where: { ID: id } }).then(cont => {
+    Ubuntu.findOne({ where: { ID: id } }).then(cont => {
       res.status(200).send(cont);
     });
   } catch (err) {
@@ -35,7 +36,7 @@ const ShowOneUbuntu = async (req, res) => {
 
 const FindAllUbuntu = async (req, res) => {
   try {
-    Conta.findAll().then(cont => {
+    Ubuntu.findAll().then(cont => {
       res.status(200).send(cont);
     });
   } catch (err) {
@@ -49,7 +50,7 @@ const UpdateUbuntu = async (req, res) => {
   try {
     let id = req.params.id;
     let info = req.body;
-    Conta.update(info, { where: { ID: id } }).then(cont => {
+    Ubuntu.update(info, { where: { ID: id } }).then(cont => {
       res.status(200).send(cont);
     });
   } catch (err) {
@@ -62,7 +63,7 @@ const UpdateUbuntu = async (req, res) => {
 const DeleteUbuntu = async (req, res) => {
   try {
     let id = req.params.id;
-    Conta.destroy({ where: { ID: id } }).then(cont => {
+    Ubuntu.destroy({ where: { ID: id } }).then(cont => {
       res.status(200).send(cont);
     });
   } catch (err) {

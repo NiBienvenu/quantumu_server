@@ -18,8 +18,9 @@ const sequelize = require("./index.js")
       allowNull: false,
     },   
 
-    description: {
+    DESCRIPTION: {
       type: DataTypes.TEXT,
+      allowNull:true,
     },
    
 
