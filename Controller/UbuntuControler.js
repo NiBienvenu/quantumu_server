@@ -4,15 +4,15 @@ const Ubuntu = require('../models/Ubuntu');
 
 
 
-// create contact
+// create ubuntu
 const addUbuntu = async (req, res) => {
    
   try {
     let info = req.body
-    Ubuntu.create({...info}).then(cont => {
-      res.status(200).send(info);
-      console.log(info)
-    })
+    const ubuntu = await Ubuntu.create({...info}).then(ubuntu => {
+      res.status(200).send(ubuntu);
+   })
+  
   } catch (err) {
     res.status(500).send({
       message: err.message,
@@ -23,8 +23,8 @@ const addUbuntu = async (req, res) => {
 const ShowOneUbuntu = async (req, res) => {
   try {
     let id = req.params.id;
-    Ubuntu.findOne({ where: { ID: id } }).then(cont => {
-      res.status(200).send(cont);
+    const ubuntu = await Ubuntu.findOne({ where: { ID: id } }).then(ubuntu => {
+      res.status(200).send(ubuntu);
     });
   } catch (err) {
     res.status(500).send({
@@ -36,8 +36,8 @@ const ShowOneUbuntu = async (req, res) => {
 
 const FindAllUbuntu = async (req, res) => {
   try {
-    Ubuntu.findAll().then(cont => {
-      res.status(200).send(cont);
+    const ubuntu= await Ubuntu.findAll().then(ubuntu => {
+      res.status(200).send(ubuntu);
     });
   } catch (err) {
     res.status(500).send({
@@ -50,8 +50,8 @@ const UpdateUbuntu = async (req, res) => {
   try {
     let id = req.params.id;
     let info = req.body;
-    Ubuntu.update(info, { where: { ID: id } }).then(cont => {
-      res.status(200).send(cont);
+    const ubuntu = await Ubuntu.update(info, { where: { ID: id } }).then(ubuntu => {
+      res.status(200).send(ubuntu);
     });
   } catch (err) {
     res.status(500).send({
@@ -63,9 +63,9 @@ const UpdateUbuntu = async (req, res) => {
 const DeleteUbuntu = async (req, res) => {
   try {
     let id = req.params.id;
-    Ubuntu.destroy({ where: { ID: id } }).then(cont => {
-      res.status(200).send(cont);
-    });
+    const ubuntu = await Ubuntu.destroy({ where: { ID: id } })
+    res.status(200).send(ubuntu);
+    
   } catch (err) {
     res.status(500).send({
       message: err.message,
