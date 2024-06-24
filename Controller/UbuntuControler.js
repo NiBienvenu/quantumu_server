@@ -141,22 +141,36 @@ async function executeScript(machine) {
 }
 
 const addUbuntu = async (req, res) => {
-    try {
-        for (const machine of machines) {
-            try {
-                const result = await executeScript(machine);
-                console.log(result);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        res.status(200).send({ message: "Script executed on all machines" });
-    } catch (error) {
-        console.log('error: ' + error);
-        res.status(500).send({
-            message: error.message,
-        });
-    }
+
+  try {
+
+    const info = req.body
+    console.log(info)
+    const ubuntu = await Ubuntu.create(info);
+    res.status(200).json(ubuntu);
+
+  } catch (error) {
+    
+  }
+
+
+
+    // try {
+    //     for (const machine of machines) {
+    //         try {
+    //             const result = await executeScript(machine);
+    //             console.log(result);
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     }
+    //     res.status(200).send({ message: "Script executed on all machines" });
+    // } catch (error) {
+    //     console.log('error: ' + error);
+    //     res.status(500).send({
+    //         message: error.message,
+    //     });
+    // }
 }
 const ShowOneUbuntu = async (req, res) => {
   try {

@@ -1,11 +1,11 @@
 meta {
-  name: addubuntu
+  name: updateubuntu
   type: http
-  seq: 7
+  seq: 2
 }
 
-post {
-  url: http://192.168.1.11:8081/vm/addubuntu
+put {
+  url: http://192.168.1.11:8081/vm/updateUbuntu/4
   body: json
   auth: none
 }
